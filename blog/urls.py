@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.post_list, name='post_list'), #Gördüğünüz üzere, ana URL'e post_list adında  bir view atıyoruz
     path('post/<int:pk>/',views.post_detail, name = 'post_detail'), #post/<int:pk>/ kısmı bir URL kalıbı belirtir
+    #
     
 ]
 #Son kısım name='post_list', görünümü (view) tanımlamak için kullanılan URL'in adıdır.
