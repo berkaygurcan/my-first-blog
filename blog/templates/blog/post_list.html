@@ -1,25 +1,19 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %} <!--  Bu iki şablonu birbirine bağlamamız gerekiyor.
+     Genişleyen şablonlar tam da bununla ilgili! Bunu dosyanın başlangıcına genişleyebilir 
+     etiketler ekleyerek yapacağız.-->
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 
-    
-        {% for post in posts %}
-        <div>
-            <p>published: {{post.published_date}}</p>
-            <h2><a href="">{{post.title}}</a></h2>
-            <p>{{post.text | linebreaksbr}}</p>
-        </div>
-        {% endfor %}
+            <!-- post_detail kısmı Django'nun blog/urls.py/ dosyasının içinde 
+                post_detail adlı bir URL beklediği anlamına gelir. -->
+            <p>{{ post.text|linebreaksbr }}</p>
 
-        <div>
-            <p>published: 14.06.2014, 12:20</p>
-            <h2><a href="">İkinci gönderim</a></h2>
-            <p>Bir varmış bir yokmuş, evvel zaman içinde Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. kalbur saman içinde, develer tellal iken, pireler berber iken; ben annemin beşiğini tıngır mıngır sallar iken.</p>
+        
         </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
