@@ -6,8 +6,10 @@ urlpatterns = [
     path('post/<int:pk>/',views.post_detail, name = 'post_detail'), #post/<int:pk>/ kısmı bir URL kalıbı belirtir
     path('post/new/', views.post_new, name='post_new'),
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+    path('drafts/', views.post_draft_list, name='post_draft_list'),
+    path('post/<pk>/publish/', views.post_publish, name='post_publish'),
+    path('post/<pk>/remove/', views.post_remove, name='post_remove'),
 
-    
 ]
 #Son kısım name='post_list', görünümü (view) tanımlamak için kullanılan URL'in adıdır.
 #  Bu view'un adı ile aynı olabilir ama tamamen farklı bir şey de olabilir.
