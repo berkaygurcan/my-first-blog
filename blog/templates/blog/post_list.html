@@ -12,7 +12,7 @@
             <!-- post_detail kısmı Django'nun blog/urls.py/ dosyasının içinde 
                 post_detail adlı bir URL beklediği anlamına gelir. -->
             <p>{{ post.text|linebreaksbr }}</p>
-
+            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         
         </div>
     {% endfor %}
